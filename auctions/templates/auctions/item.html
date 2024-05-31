@@ -1,0 +1,41 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+<img src="/media/{{ item.image_url }}" width="400" alt="Picture of item here.">
+<p>{{ item.category }}</p>
+<h3>{{ item.title }}</h3>
+<p>{{ item.description }}</p>
+<br>
+<br>
+<div>
+Starting Bid :{{ item.starting_bid }} <br>
+Created by {{ item.created_by }}  <br>
+Created at {{ item.created_at }}  <br>
+<p>{{ item.created_at }}</p>
+</div>
+<!-- Here bids will be displayed. -->
+<h2>Bids</h2>
+{% for bid in bids %}
+<ol>
+    <li>
+        {{ bid.amount }}
+        {{ bid.bidder }}
+        {{ bid.created_at }}
+    </li>
+</ol>
+{% empty %}
+<li>No bids yet.</li>
+{% endfor %}
+<h2>Comments</h2>
+{% for comment in comments %}
+
+<h3>{{ comment.commenter }}</h3>
+<p>{{ comment.created_at }}</p>
+<ul>
+    <p> {{ comment.content }}</p>
+</ul>
+{% empty %}
+<li>No bids yet.</li>
+{% endfor %}
+
+{% endblock %}
